@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbaijvurnfaas"]
+
+[ext_resource type="Texture2D" uid="uid://2hwayqevskin" path="res://assets/Shoot Effect.png" id="1_biynf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16yb5"]
+atlas = ExtResource("1_biynf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlwy4"]
+atlas = ExtResource("1_biynf")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_td74o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16yb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlwy4")
+}],
+"loop": true,
+"name": &"Animate",
+"speed": 15.0
+}]
+
+[node name="ShootAnimation" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_td74o")
+animation = &"Animate"

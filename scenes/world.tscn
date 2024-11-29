@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cb2q1ptqts7w3"]
+[gd_scene load_steps=9 format=3 uid="uid://cb2q1ptqts7w3"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_0ivp0"]
 [ext_resource type="PackedScene" uid="uid://cc3a1xwcw3rox" path="res://scenes/player_1.tscn" id="1_dogw2"]
 [ext_resource type="PackedScene" uid="uid://cp3k2dxngo6sn" path="res://scenes/player_2.tscn" id="2_68e33"]
+[ext_resource type="Texture2D" uid="uid://dwfxophfdw0c" path="res://assets/Terrain 1.png" id="4_uq70b"]
+[ext_resource type="AudioStream" uid="uid://bd7tsbjytwrlb" path="res://assets/SoundEffect.wav" id="5_tkj7q"]
+[ext_resource type="AudioStream" uid="uid://dcfc4hxr0b7ym" path="res://assets/Explosion.wav" id="6_3fh6c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfkqj"]
 size = Vector2(20, 648)
@@ -13,6 +16,19 @@ size = Vector2(1165, 20)
 [node name="world" type="Node2D"]
 position = Vector2(8, -5)
 script = ExtResource("1_0ivp0")
+
+[node name="BackgroundImage" type="TextureRect" parent="."]
+show_behind_parent = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -705.0
+offset_top = -361.0
+offset_right = 1855.0
+offset_bottom = 1079.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_uq70b")
 
 [node name="player1" parent="." instance=ExtResource("1_dogw2")]
 position = Vector2(154, 362)
@@ -99,5 +115,12 @@ offset_right = 646.0
 offset_bottom = 312.0
 theme_override_font_sizes/font_size = 30
 text = "Play Again"
+
+[node name="ShootEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_tkj7q")
+volume_db = -8.211
+
+[node name="ExplosionEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_3fh6c")
 
 [connection signal="pressed" from="GameOverScreem/Button" to="." method="_on_button_pressed"]
